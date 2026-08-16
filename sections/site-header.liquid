@@ -1,0 +1,8 @@
+<header class="site-header page-width">
+  <a class="brand" href="{{ routes.root_url }}"><img src="{{ 'muso-dautore-logo.png' | asset_url }}" alt="{{ shop.name }}" width="420" height="158"></a>
+  <nav aria-label="Navigazione principale">
+    <a href="{{ routes.root_url }}">Home</a><a href="/collections/all">Caricature</a><a href="/pages/come-funziona">Come funziona</a><a href="/pages/chi-sono">Chi sono</a><a href="/pages/faq">FAQ</a>
+  </nav>
+  <a class="cart-link" href="{{ routes.cart_url }}">Carrello ({{ cart.item_count }})</a>
+</header>
+{% schema %}{"name":"Header","settings":[],"presets":[{"name":"Header"}]}{% endschema %}

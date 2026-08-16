@@ -1,0 +1,7 @@
+<section class="hero">
+  <div class="page-width hero__grid">
+    <div class="hero__copy"><p class="eyebrow">RITRATTI PERSONALIZZATI DI ANIMALI</p><h1>{{ section.settings.heading }}</h1><p>{{ section.settings.text }}</p><a class="button" href="{{ section.settings.link }}">{{ section.settings.button }}</a><div class="trustline"><span>✦ Disegnato a mano</span><span>✦ Anteprima inclusa</span><span>✦ Digitale o stampa</span></div></div>
+    <div class="hero__media"><img src="{{ 'hero-bea.png' | asset_url }}" alt="Caricatura artistica personalizzata di Bea" width="1536" height="1024" loading="eager"></div>
+  </div>
+</section>
+{% schema %}{"name":"Hero premium","settings":[{"type":"text","id":"heading","label":"Titolo","default":"Il tuo animale diventa un’opera d’autore"},{"type":"textarea","id":"text","label":"Testo","default":"Trasformo la sua espressione, il suo carattere e la vostra storia in una caricatura unica, disegnata a mano in Procreate."},{"type":"text","id":"button","label":"Pulsante","default":"Crea la tua caricatura"},{"type":"url","id":"link","label":"Link"}],"presets":[{"name":"Hero premium"}]}{% endschema %}
