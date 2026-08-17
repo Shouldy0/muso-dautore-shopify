@@ -1,1 +1,31 @@
-{"sections":{"main":{"type":"main-product","settings":{}}},"order":["main"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "before_after": {
+      "type": "before-after",
+      "settings": {}
+    },
+    "photo_guide": {
+      "type": "photo-guide",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "before_after",
+    "photo_guide",
+    "reviews",
+    "faq"
+  ]
+}

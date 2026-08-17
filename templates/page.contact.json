@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "contact": {
+      "type": "contact-form",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    }
+  },
+  "order": [
+    "contact",
+    "faq"
+  ]
+}

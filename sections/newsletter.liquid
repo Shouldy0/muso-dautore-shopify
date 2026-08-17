@@ -1,0 +1,26 @@
+<section class="section section--tint">
+  <div class="page-width" style="max-width:680px; text-align:center;">
+    <span class="eyebrow">CLUB MUSO D'AUTORE</span>
+    <h2 style="font-family:var(--serif); font-size:36px; margin:12px 0;">Ricevi il 10% di Sconto sul Primo Ritratto</h2>
+    <p style="color:var(--ink-light); margin-bottom:28px;">Iscriviti alla nostra newsletter per scoprire le nuove illustrazioni, consigli di cura per cuccioli e promozioni esclusive.</p>
+    
+    <form method="post" action="/contact#contact_form" class="newsletter-form" style="display:flex; gap:12px; max-width:500px; margin:0 auto;">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="email" name="contact[email]" class="customizer-input" placeholder="Inserisci la tua email..." required style="background:var(--white);">
+      <button type="submit" class="button" style="white-space:nowrap;">Iscriviti 🐾</button>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

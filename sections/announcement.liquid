@@ -1,2 +1,30 @@
-<div class="announcement">{{ section.settings.text }}</div>
-{% schema %}{"name":"Barra informativa","settings":[{"type":"text","id":"text","label":"Testo","default":"Caricature personalizzate, disegnate a mano con amore"}],"presets":[{"name":"Barra informativa"}]}{% endschema %}
+{% if section.settings.show_announcement %}
+  <div class="announcement-bar">
+    {{ section.settings.text }}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Barra Annuncio",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Mostra barra annuncio",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Testo Annuncio",
+      "default": "🎨 <strong>Spedizione Gratuita</strong> in tutta Italia per ordini superiori a 50€ | Anteprima in 48 ore!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra Annuncio"
+    }
+  ]
+}
+{% endschema %}

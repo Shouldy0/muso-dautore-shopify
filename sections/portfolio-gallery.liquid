@@ -1,0 +1,56 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-heading">
+      <span class="eyebrow">GALLERIA D'AUTORE</span>
+      <h2>Esplora le nostre creazioni</h2>
+      <p>Ogni ritratto racchiude una storia d'amore speciale.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="portfolio-filters">
+      <button class="portfolio-filter-btn is-active" data-portfolio-filter="all">Tutti i Ritratti</button>
+      <button class="portfolio-filter-btn" data-portfolio-filter="cani">Cani 🐶</button>
+      <button class="portfolio-filter-btn" data-portfolio-filter="gatti">Gatti 🐱</button>
+      <button class="portfolio-filter-btn" data-portfolio-filter="multipli">Ritratti Multipli 🐾</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="portfolio-grid">
+      <div class="portfolio-item" data-portfolio-item data-category="cani">
+        <img src="{{ 'hero-bea.png' | asset_url }}" alt="Caricatura Bea" width="400" height="400" loading="lazy">
+        <div class="portfolio-item__caption">
+          <h4>Bea il Segugio</h4>
+          <p style="font-size:13px; margin:4px 0 0; opacity:0.8;">Ritratto Singolo · Pastello Warm</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-portfolio-item data-category="gatti">
+        <img src="{{ 'bea-mascotte.png' | asset_url }}" alt="Caricatura Gatto" width="400" height="400" loading="lazy">
+        <div class="portfolio-item__caption">
+          <h4>Milo il Gatto</h4>
+          <p style="font-size:13px; margin:4px 0 0; opacity:0.8;">Ritratto Singolo · Sfondo Mint</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-portfolio-item data-category="multipli">
+        <img src="{{ 'come-funziona.png' | asset_url }}" alt="Caricatura Due Cani" width="400" height="400" loading="lazy">
+        <div class="portfolio-item__caption">
+          <h4>Max & Toby</h4>
+          <p style="font-size:13px; margin:4px 0 0; opacity:0.8;">Coppia di Cuccioli · Stampa Fine Art A3</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Galleria Portfolio",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Galleria Portfolio"
+    }
+  ]
+}
+{% endschema %}

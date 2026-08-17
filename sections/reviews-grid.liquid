@@ -1,0 +1,89 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-heading">
+      <span class="eyebrow">AMORE A PRIMA VISTA</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="reviews-grid">
+      
+      <!-- Review Card 1 -->
+      <div class="review-card">
+        <div>
+          <div class="review-card__stars">★★★★★</div>
+          <div class="review-card__text">
+            "Ho fatto fare il ritratto di Oliver per il compleanno di mia moglie. Ha pianto dall'emozione! La somiglianza è incredibile e l'espressività degli occhi è esattamente la sua."
+          </div>
+        </div>
+        <div class="review-card__author">
+          <img src="{{ 'bea-mascotte.png' | asset_url }}" alt="Marco e Oliver" class="review-card__avatar" width="50" height="50">
+          <div>
+            <div class="review-card__name">Marco S.</div>
+            <div class="review-card__badge">✓ Acquirente Verificato (Ritratto Oliver)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Card 2 -->
+      <div class="review-card">
+        <div>
+          <div class="review-card__stars">★★★★★</div>
+          <div class="review-card__text">
+            "Assistenza super gentile e tempi veloci. Mi hanno inviato prima l'anteprima e ho chiesto una piccola modifica allo sfondo che hanno fatto subito. Servizio d'eccellenza!"
+          </div>
+        </div>
+        <div class="review-card__author">
+          <img src="{{ 'hero-bea.png' | asset_url }}" alt="Giulia e Luna" class="review-card__avatar" width="50" height="50">
+          <div>
+            <div class="review-card__name">Giulia R.</div>
+            <div class="review-card__badge">✓ Acquirente Verificato (Ritratto Luna)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Card 3 -->
+      <div class="review-card">
+        <div>
+          <div class="review-card__stars">★★★★★</div>
+          <div class="review-card__text">
+            "Ho preso la versione in tela A3 con due cani. È la prima cosa che gli ospiti notano quando entrano in salotto. Qualità di stampa eccellente e colori caldi meravigliosi."
+          </div>
+        </div>
+        <div class="review-card__author">
+          <img src="{{ 'come-funziona.png' | asset_url }}" alt="Alessandro e Cuccioli" class="review-card__avatar" width="50" height="50">
+          <div>
+            <div class="review-card__name">Alessandro T.</div>
+            <div class="review-card__badge">✓ Acquirente Verificato (Ritratto 2 Animali)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recensioni Clienti",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titolo",
+      "default": "Cosa dicono i nostri clienti"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sottotitolo",
+      "default": "Oltre 350 ritratti realizzati e consegnati con amore in tutta Italia."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recensioni Clienti"
+    }
+  ]
+}
+{% endschema %}

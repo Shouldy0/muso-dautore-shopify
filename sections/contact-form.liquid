@@ -1,0 +1,52 @@
+<section class="section">
+  <div class="page-width" style="max-width:800px;">
+    <div class="section-heading">
+      <span class="eyebrow">SIAMO QUI PER TE</span>
+      <h2>Hai domande o richieste speciali?</h2>
+      <p>Scrivici per informazioni su ritratti personalizzati, ordini di gruppo o collaborazioni.</p>
+    </div>
+
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <div style="background-color:rgba(45,138,86,0.1); color:var(--green); padding:18px; border-radius:12px; font-weight:600; text-align:center; margin-bottom:24px;">
+          ✓ Grazie per averci contattato! Ti risponderemo entro 24 ore lavorative.
+        </div>
+      {% endif %}
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
+        <div>
+          <label class="customizer-label">Il tuo Nome *</label>
+          <input type="text" name="contact[name]" class="customizer-input" required placeholder="Mario Rossi">
+        </div>
+        <div>
+          <label class="customizer-label">La tua Email *</label>
+          <input type="email" name="contact[email]" class="customizer-input" required placeholder="mario@example.com">
+        </div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <label class="customizer-label">Oggetto della richiesta</label>
+        <input type="text" name="contact[subject]" class="customizer-input" placeholder="Es. Informazioni ritratto personalizzato / Stato ordine">
+      </div>
+
+      <div style="margin-bottom:28px;">
+        <label class="customizer-label">Il tuo Messaggio *</label>
+        <textarea name="contact[body]" class="customizer-input" rows="5" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+      </div>
+
+      <button type="submit" class="button button--full">Invia Messaggio ✉️</button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Form Contatti",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Form Contatti"
+    }
+  ]
+}
+{% endschema %}

@@ -1,2 +1,19 @@
-<article class="section page-width prose"><h1>{{ page.title }}</h1>{{ page.content }}</article>
-{% schema %}{"name":"Pagina","settings":[]}{% endschema %}
+<article class="section page-width prose" style="max-width:860px; margin:0 auto;">
+  <span class="eyebrow">MUSO D'AUTORE</span>
+  <h1 style="font-family:var(--serif); font-size:clamp(36px, 4.5vw, 56px); margin:12px 0 24px;">{{ page.title }}</h1>
+  <div style="font-size:18px; line-height:1.7; color:var(--ink-light);">
+    {{ page.content }}
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Pagina Standard",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Pagina Standard"
+    }
+  ]
+}
+{% endschema %}

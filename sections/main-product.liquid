@@ -1,2 +1,179 @@
-<section class="section page-width product"><div class="product__media">{% for media in product.media %}{{ media | image_url: width: 1200 | image_tag: loading: 'lazy' }}{% else %}<img src="{{ 'hero-bea.png' | asset_url }}" alt="Esempio caricatura" width="1200" height="800">{% endfor %}</div><div class="product__info"><p class="eyebrow">CREATO SOLO PER TE</p><h1>{{ product.title }}</h1><div class="price">{{ product.price | money }}</div>{{ product.description }}{% form 'product', product %}{% unless product.has_only_default_variant %}<label for="variant">Scegli l’opzione</label><select id="variant" name="id">{% for variant in product.variants %}<option value="{{ variant.id }}">{{ variant.title }} · {{ variant.price | money }}</option>{% endfor %}</select>{% else %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{% endunless %}<button class="button" type="submit">Inizia il tuo ritratto</button>{% endform %}<ul class="product-trust"><li>Una revisione leggera inclusa</li><li>File digitale ad alta risoluzione</li><li>Stampe controllate e confezionate a mano</li></ul></div></section>
-{% schema %}{"name":"Prodotto principale","settings":[]}{% endschema %}
+<section class="section product-page">
+  <div class="page-width product-grid">
+    
+    <!-- Gallery Section -->
+    <div class="product-gallery">
+      <div class="product-gallery__main">
+        {% if product.selected_or_first_available_variant.featured_media %}
+          <img src="{{ product.selected_or_first_available_variant.featured_media | image_url: width: 1200 }}" alt="{{ product.title | escape }}" width="600" height="600" loading="eager">
+        {% elsif product.featured_media %}
+          <img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.title | escape }}" width="600" height="600" loading="eager">
+        {% else %}
+          <img src="{{ 'hero-bea.png' | asset_url }}" alt="Esempio Caricatura Muso d'Autore" width="600" height="600" loading="eager">
+        {% endif %}
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:16px;">
+        <img src="{{ 'hero-bea.png' | asset_url }}" alt="Esempio Ritratto Cane" width="100" height="100" style="border-radius:12px; border:2px solid var(--terra); cursor:pointer;">
+        <img src="{{ 'come-funziona.png' | asset_url }}" alt="Esempio Ritratto Gatto" width="100" height="100" style="border-radius:12px; opacity:0.8; cursor:pointer;">
+        <img src="{{ 'bea-mascotte.png' | asset_url }}" alt="Mascotte Bea" width="100" height="100" style="border-radius:12px; opacity:0.8; cursor:pointer;">
+      </div>
+    </div>
+
+    <!-- Product Customizer Form -->
+    <div class="product-customizer">
+      <div class="product-customizer__header">
+        <span class="eyebrow">🎨 OPERA D'ARTE SU MISURA</span>
+        <h1 class="product-customizer__title">{{ product.title | default: "Caricatura Artistica Muso d’Autore" }}</h1>
+        
+        <div class="product-customizer__price-row">
+          <span class="product-customizer__price" data-product-price>{{ product.selected_or_first_available_variant.price | default: 3900 | money }}</span>
+          <span class="product-customizer__badge">✨ Anteprima Gratuita Inclusa</span>
+        </div>
+      </div>
+
+      <form method="post" action="/cart/add" enctype="multipart/form-data" data-product-customizer-form>
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: 1 }}" data-variant-select>
+
+        <!-- STEP 1: Upload Photo -->
+        <div class="customizer-group">
+          <label class="customizer-label">
+            1. Carica la foto del tuo animale <span>(Richiesta *)</span>
+          </label>
+          
+          <div class="upload-dropzone" data-upload-dropzone>
+            <div class="upload-dropzone__icon">📸</div>
+            <div class="upload-dropzone__text">Clicca o trascina qui la tua foto</div>
+            <div class="upload-dropzone__hint">JPG, PNG o HEIC fino a 20MB. Nitida e luminosa.</div>
+            <input type="file" name="properties[Foto Animale]" accept="image/*" class="hidden" data-upload-input required>
+          </div>
+
+          <div class="upload-preview hidden" data-upload-preview>
+            <img src="" alt="Anteprima Foto" data-preview-img>
+            <div class="upload-preview__info">
+              <div class="upload-preview__name" data-file-name>foto-animale.jpg</div>
+              <div style="font-size:12px; color:var(--green); font-weight:600;">✓ Foto allegata con successo</div>
+            </div>
+            <button type="button" class="upload-preview__remove" data-remove-file>Cambia</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Variant Options (if any) -->
+        {% unless product.has_only_default_variant %}
+          <div class="customizer-group">
+            <label class="customizer-label">2. Scegli il formato e supporto</label>
+            <div class="option-pills">
+              {% for variant in product.variants %}
+                <div class="option-pill {% if forloop.first %}is-selected{% endif %}" data-variant-pill data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
+                  <div>{{ variant.title }}</div>
+                  <div style="font-size:12px; opacity:0.8;">{{ variant.price | money }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <div class="customizer-group">
+            <label class="customizer-label">2. Scegli il numero di animali nel ritratto</label>
+            <div class="option-pills">
+              <div class="option-pill is-selected" data-variant-pill data-variant-id="{{ product.selected_or_first_available_variant.id }}" data-variant-price="3900">
+                <div>1 Animale</div>
+                <div style="font-size:12px; opacity:0.8;">39,00 €</div>
+              </div>
+              <div class="option-pill" data-variant-pill data-variant-id="{{ product.selected_or_first_available_variant.id }}" data-variant-price="5900">
+                <div>2 Animali</div>
+                <div style="font-size:12px; opacity:0.8;">59,00 €</div>
+              </div>
+              <div class="option-pill" data-variant-pill data-variant-id="{{ product.selected_or_first_available_variant.id }}" data-variant-price="7900">
+                <div>3 Animali</div>
+                <div style="font-size:12px; opacity:0.8;">79,00 €</div>
+              </div>
+            </div>
+          </div>
+        {% endunless %}
+
+        <!-- STEP 3: Pet Name -->
+        <div class="customizer-group">
+          <label class="customizer-label">3. Nome dell'animale <span>(Opzionale - da includere nell'opera)</span></label>
+          <input type="text" name="properties[Nome Animale]" class="customizer-input" placeholder="Es. Bea, Milo, Oliver...">
+        </div>
+
+        <!-- STEP 4: Color Background -->
+        <div class="customizer-group">
+          <label class="customizer-label">4. Stile e Colore Sfondo</label>
+          <select name="properties[Colore Sfondo]" class="customizer-input">
+            <option value="Pastello Warm (Consigliato)">Pastello Warm (Consigliato)</option>
+            <option value="Terra di Cotta">Terra di Cotta</option>
+            <option value="Verde Salvia Soft">Verde Salvia Soft</option>
+            <option value="Grigio Antracite Elegante">Grigio Antracite Elegante</option>
+            <option value="Bianco Puro Minimal">Bianco Puro Minimal</option>
+          </select>
+        </div>
+
+        <!-- STEP 5: Special Artist Notes -->
+        <div class="customizer-group">
+          <label class="customizer-label">5. Note per l'Artista <span>(Opzionale)</span></label>
+          <textarea name="properties[Note per l'Artista]" class="customizer-input" rows="3" placeholder="Es. Metti in risalto la macchia sul musetto, disegna una coroncina, o aggiungi la sua copertina preferita..."></textarea>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="button button--full" style="font-size:18px; padding:18px;">
+          <span>🎨 Ordina il tuo Ritratto D'Autore</span>
+        </button>
+
+        <!-- Trust Badges -->
+        <div class="trustline" style="justify-content:center; margin-top:24px;">
+          <span>✦ Disegnato a mano in Procreate</span>
+          <span>✦ Anteprima via WhatsApp/Email</span>
+          <span>✦ 1 Revisione Gratuita Inclusa</span>
+        </div>
+      </form>
+
+      <!-- Accordion Details -->
+      <div class="accordion-group" data-accordion-group style="margin-top:32px;">
+        <div class="accordion-item is-open" data-accordion-item>
+          <button class="accordion-trigger" data-accordion-trigger type="button">
+            <span>✨ Come funziona la consegna e l'anteprima?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            Entro 48-72 ore lavorative dalla ricezione della foto, l'artista completerà la prima bozza. Ti invieremo un'anteprima in alta risoluzione per approvale o richiedere una leggera revisione prima della stampa o dell'invio finale del file digitale.
+          </div>
+        </div>
+
+        <div class="accordion-item" data-accordion-item>
+          <button class="accordion-trigger" data-accordion-trigger type="button">
+            <span>📦 Tempi di Spedizione e Imballaggio</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            I prodotti digitali vengono inviati istantaneamente in alta risoluzione pronta per la stampa (300 DPI PDF/JPG). Per le stampe Fine Art e le Tele, la spedizione richiede 2-4 giorni lavorativi con corriere espresso tracciato in imballo rigido protettivo.
+          </div>
+        </div>
+
+        <div class="accordion-item" data-accordion-item>
+          <button class="accordion-trigger" data-accordion-trigger type="button">
+            <span>🛡️ Garanzia "Muso Soddisfatto o Modificato"</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            La tua soddisfazione è la nostra priorità assoluta. Se la caricatura non cattura esattamente la personalità del tuo cucciolo, apporteremo le modifiche necessarie gratuitamente fino al tuo OK definitivo.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Prodotto Customizer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Prodotto Customizer"
+    }
+  ]
+}
+{% endschema %}

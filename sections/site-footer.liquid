@@ -1,2 +1,68 @@
-<footer class="footer"><div class="page-width footer__grid"><div><img src="{{ 'muso-dautore-logo.png' | asset_url }}" alt="Muso d’Autore" width="320" height="120"><p>Caricature di animali disegnate a mano, create in Italia.</p></div><div><h3>Esplora</h3><a href="/collections/all">Caricature</a><a href="/pages/come-funziona">Come funziona</a><a href="/pages/chi-sono">Chi sono</a></div><div><h3>Assistenza</h3><a href="/pages/faq">FAQ</a><a href="/pages/contact">Contatti</a><a href="/policies/shipping-policy">Spedizioni</a><a href="/policies/refund-policy">Resi</a></div></div><div class="page-width footer__bottom">© {{ 'now' | date: '%Y' }} Muso d’Autore · Fatto con cura in Italia</div></footer>
-{% schema %}{"name":"Footer","settings":[],"presets":[{"name":"Footer"}]}{% endschema %}
+<footer class="footer">
+  <div class="page-width footer__grid">
+    <div>
+      <a href="{{ routes.root_url }}" class="footer-logo">
+        <img src="{{ 'muso-dautore-logo.png' | asset_url }}" alt="Muso d’Autore" width="200" height="75" loading="lazy">
+      </a>
+      <p style="margin-top:12px; font-size:15px; opacity:0.85;">
+        Ritratti ed illustrazioni d'autore per i nostri compagni di vita. Disegnati con cura artigianale in Italia.
+      </p>
+      <div style="display:flex; gap:16px; margin-top:20px; font-size:20px;">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="TikTok">🎵</a>
+        <a href="#" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+
+    <div>
+      <h4>Esplora</h4>
+      <ul>
+        <li><a href="/collections/all">Tutti i Ritratti</a></li>
+        <li><a href="/pages/come-funziona">Come Funziona</a></li>
+        <li><a href="/pages/chi-sono">Chi Sono</a></li>
+        <li><a href="/products/buono-regalo-muso-d-autore">Buoni Regalo</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Assistenza</h4>
+      <ul>
+        <li><a href="/pages/faq">Domande Frequenti (FAQ)</a></li>
+        <li><a href="/pages/contatti">Contattaci</a></li>
+        <li><a href="/policies/shipping-policy">Spedizioni & Consegna</a></li>
+        <li><a href="/policies/refund-policy">Garanzia & Resi</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Garanzia Muso d'Autore</h4>
+      <p style="font-size:14px; opacity:0.85; margin-bottom:16px;">
+        Ricevi sempre un'anteprima prima della stampa con 1 revisione gratuita inclusa.
+      </p>
+      <div style="font-size:13px; opacity:0.75;">
+        💳 Pagamenti sicuri con Carta, PayPal, Klarna e Apple Pay.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-width footer__bottom">
+    <div>© {{ 'now' | date: '%Y' }} Muso d’Autore · Tutti i diritti riservati. Fatto con passione in Italia.</div>
+    <div style="display:flex; gap:16px;">
+      <a href="/policies/privacy-policy">Privacy Policy</a>
+      <a href="/policies/terms-of-service">Termini di Servizio</a>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer Muso d'Autore",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Footer Muso d'Autore"
+    }
+  ]
+}
+{% endschema %}

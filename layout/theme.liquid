@@ -4,14 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="canonical" href="{{ canonical_url }}">
-    <title>{{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}</title>
+    
+    <title>
+      {{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
     {{ content_for_header }}
+
     {{ 'theme.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   </head>
   <body>
-    <a class="skip-link" href="#MainContent">Vai al contenuto</a>
+    <a class="skip-link" href="#MainContent">Vai al contenuto principale</a>
+
+    {% section 'announcement' %}
     {% sections 'header-group' %}
-    <main id="MainContent">{{ content_for_layout }}</main>
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'cart-drawer' %}
     {% sections 'footer-group' %}
   </body>
 </html>

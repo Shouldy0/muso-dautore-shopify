@@ -1,0 +1,108 @@
+<div class="cart-drawer" data-cart-drawer>
+  <div class="cart-drawer__header">
+    <h3>Il tuo Carrello (<span data-cart-count>{{ cart.item_count }}</span>)</h3>
+    <button class="cart-drawer__close" data-cart-drawer-close aria-label="Chiudi carrello">&times;</button>
+  </div>
+
+  <div class="cart-drawer__shipping-banner">
+    <div data-cart-shipping-text>
+      {% assign threshold = 5000 %}
+      {% if cart.total_price >= threshold %}
+        🎉 <strong>Complimenti!</strong> Hai diritto alla <strong>Spedizione Gratuita</strong>!
+      {% else %}
+        {% assign remaining = threshold | minus: cart.total_price %}
+        Mancano <strong>{{ remaining | money }}</strong> per la Spedizione Gratuita
+      {% endif %}
+    </div>
+    <div class="cart-drawer__shipping-bar-track">
+      {% assign percentage = cart.total_price | times: 100 | divided_by: threshold %}
+      {% if percentage > 100 %}{% assign percentage = 100 %}{% endif %}
+      <div class="cart-drawer__shipping-bar-fill" data-cart-shipping-meter style="width: {{ percentage }}%;"></div>
+    </div>
+  </div>
+
+  <div class="cart-drawer__body" data-cart-drawer-items>
+    {% if cart.item_count == 0 %}
+      <div class="cart-drawer__empty">
+        <div class="cart-drawer__empty-icon">🎨</div>
+        <h3>Il tuo carrello è vuoto</h3>
+        <p>Inizia a personalizzare il ritratto d'autore del tuo fedele compagno!</p>
+        <a href="/collections/all" class="button button--secondary" style="margin-top:16px;">Esplora Opzioni</a>
+      </div>
+    {% else %}
+      <div class="cart-drawer__item-list">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <div class="cart-item__image">
+              {% if item.image %}
+                <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="80" height="80">
+              {% else %}
+                <img src="{{ 'hero-bea.png' | asset_url }}" alt="Muso d'Autore" width="80" height="80">
+              {% endif %}
+            </div>
+            <div class="cart-item__details">
+              <div class="cart-item__title-row">
+                <h4 class="cart-item__title">{{ item.product.title }}</h4>
+                <button type="button" class="cart-item__remove" data-cart-remove data-line="{{ forloop.index }}" aria-label="Rimuovi prodotto">&times;</button>
+              </div>
+              {% unless item.product.has_only_default_variant %}
+                <div class="cart-item__variant">{{ item.variant.title }}</div>
+              {% endunless %}
+              
+              {% if item.properties.size > 0 %}
+                <div class="cart-item__properties">
+                  {% for p in item.properties %}
+                    {% unless p.last == blank or p.first startswith '_' %}
+                      <div>
+                        <strong>{{ p.first }}:</strong>
+                        {% if p.last contains '/uploads/' or p.last contains 'http' %}
+                          <a href="{{ p.last }}" target="_blank">Foto caricata 📷</a>
+                        {% else %}
+                          {{ p.last }}
+                        {% endif %}
+                      </div>
+                    {% endunless %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <div class="cart-item__bottom">
+                <div class="cart-item__qty-selector">
+                  <button type="button" data-cart-qty-change="-1" data-line="{{ forloop.index }}" data-qty="{{ item.quantity }}">-</button>
+                  <span>{{ item.quantity }}</span>
+                  <button type="button" data-cart-qty-change="1" data-line="{{ forloop.index }}" data-qty="{{ item.quantity }}">+</button>
+                </div>
+                <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__subtotal">
+      <span>Totale Parziale:</span>
+      <span data-cart-subtotal>{{ cart.total_price | money }}</span>
+    </div>
+    <p style="font-size:12px; color:var(--ink-light); margin-bottom:16px;">Tasse e spese di spedizione calcolate al momento del checkout.</p>
+    <a href="/checkout" class="button button--full">Procedi al Checkout</a>
+    <div style="text-align:center; margin-top:12px;">
+      <a href="/cart" style="font-size:13px; text-decoration:underline;">Vedi pagina carrello completa</a>
+    </div>
+  </div>
+</div>
+<div class="drawer-overlay" data-cart-drawer-overlay></div>
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cart Drawer"
+    }
+  ]
+}
+{% endschema %}

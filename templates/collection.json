@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "reviews"
+  ]
+}

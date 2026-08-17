@@ -1,8 +1,62 @@
-<header class="site-header page-width">
-  <a class="brand" href="{{ routes.root_url }}"><img src="{{ 'muso-dautore-logo.png' | asset_url }}" alt="{{ shop.name }}" width="420" height="158"></a>
-  <nav aria-label="Navigazione principale">
-    <a href="{{ routes.root_url }}">Home</a><a href="/collections/all">Caricature</a><a href="/pages/come-funziona">Come funziona</a><a href="/pages/chi-sono">Chi sono</a><a href="/pages/faq">FAQ</a>
-  </nav>
-  <a class="cart-link" href="{{ routes.cart_url }}">Carrello ({{ cart.item_count }})</a>
+<header class="site-header">
+  <div class="page-width site-header__inner">
+    <button class="hamburger-btn" data-mobile-menu-toggle aria-label="Apri menu navigazione">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <a class="brand-logo" href="{{ routes.root_url }}">
+      <img src="{{ 'muso-dautore-logo.png' | asset_url }}" alt="{{ shop.name }}" width="190" height="70" loading="eager">
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navigazione principale">
+      <a href="{{ routes.root_url }}" {% if request.path == routes.root_url %}class="is-active"{% endif %}>Home</a>
+      <a href="/collections/all" {% if request.path contains '/collections' %}class="is-active"{% endif %}>Caricature</a>
+      <a href="/pages/come-funziona" {% if request.path contains 'come-funziona' %}class="is-active"{% endif %}>Come funziona</a>
+      <a href="/pages/chi-sono" {% if request.path contains 'chi-sono' %}class="is-active"{% endif %}>Chi sono</a>
+      <a href="/pages/faq" {% if request.path contains 'faq' %}class="is-active"{% endif %}>FAQ</a>
+      <a href="/pages/contatti" {% if request.path contains 'contatti' %}class="is-active"{% endif %}>Contatti</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-toggle-btn" data-open-cart aria-label="Apri carrello">
+        <span>Carrello</span>
+        <span class="cart-count-badge {% if cart.item_count == 0 %}hidden{% endif %}" data-cart-count>{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </div>
 </header>
-{% schema %}{"name":"Header","settings":[],"presets":[{"name":"Header"}]}{% endschema %}
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-nav-drawer" data-mobile-menu>
+  <div class="mobile-nav-header">
+    <a class="brand-logo" href="{{ routes.root_url }}">
+      <img src="{{ 'muso-dautore-logo.png' | asset_url }}" alt="{{ shop.name }}" width="140" height="50">
+    </a>
+    <button class="cart-drawer__close" data-mobile-menu-close aria-label="Chiudi menu">&times;</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="{{ routes.root_url }}">Home</a>
+    <a href="/collections/all">Caricature</a>
+    <a href="/pages/come-funziona">Come funziona</a>
+    <a href="/pages/chi-sono">Chi sono</a>
+    <a href="/pages/faq">FAQ</a>
+    <a href="/pages/contatti">Contatti</a>
+  </div>
+</div>
+<div class="drawer-overlay" data-mobile-menu-overlay></div>
+
+{% schema %}
+{
+  "name": "Header Muso d'Autore",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Header Muso d'Autore"
+    }
+  ]
+}
+{% endschema %}

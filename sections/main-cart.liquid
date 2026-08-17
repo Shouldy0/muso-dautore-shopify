@@ -1,0 +1,92 @@
+<section class="section">
+  <div class="page-width" style="max-width:900px;">
+    <div class="section-heading">
+      <span class="eyebrow">IL TUO ORDINE</span>
+      <h2>Carrello d'Autore</h2>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <form action="/cart" method="post">
+        <div style="background:var(--white); border:1px solid var(--line); border-radius:var(--radius-lg); padding:30px; box-shadow:var(--shadow-sm); margin-bottom:30px;">
+          {% for item in cart.items %}
+            <div class="cart-item">
+              <div class="cart-item__image" style="width:100px; height:100px;">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}">
+                {% else %}
+                  <img src="{{ 'hero-bea.png' | asset_url }}" alt="Muso d'Autore">
+                {% endif %}
+              </div>
+
+              <div class="cart-item__details">
+                <div class="cart-item__title-row">
+                  <h3 style="font-family:var(--serif); font-size:20px; margin:0;">{{ item.product.title }}</h3>
+                  <a href="/cart/change?line={{ forloop.index }}&quantity=0" style="color:var(--terra); font-weight:600;">Rimuovi &times;</a>
+                </div>
+
+                {% unless item.product.has_only_default_variant %}
+                  <div class="cart-item__variant">{{ item.variant.title }}</div>
+                {% endunless %}
+
+                {% if item.properties.size > 0 %}
+                  <div class="cart-item__properties" style="margin-top:10px;">
+                    {% for p in item.properties %}
+                      {% unless p.last == blank or p.first startswith '_' %}
+                        <div>
+                          <strong>{{ p.first }}:</strong>
+                          {% if p.last contains '/uploads/' or p.last contains 'http' %}
+                            <a href="{{ p.last }}" target="_blank">Visualizza Foto 📷</a>
+                          {% else %}
+                            {{ p.last }}
+                          {% endif %}
+                        </div>
+                      {% endunless %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <div class="cart-item__bottom" style="margin-top:16px;">
+                  <div class="quantity-selector">
+                    <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" class="customizer-input" style="width:70px; text-align:center; padding:8px;">
+                  </div>
+                  <div class="cart-item__price" style="font-size:20px;">{{ item.final_line_price | money }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div style="background:var(--paper); border-radius:var(--radius-lg); padding:30px; border:1px solid var(--line); display:flex; flex-direction:column; align-items:flex-end;">
+          <div style="font-size:22px; font-weight:700; margin-bottom:8px;">
+            Totale Ordine: <span style="color:var(--terra);">{{ cart.total_price | money }}</span>
+          </div>
+          <p style="font-size:14px; color:var(--ink-light); margin-bottom:20px;">Spedizione e tasse calcolate al checkout.</p>
+
+          <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end;">
+            <button type="submit" name="update" class="button button--secondary">Aggiorna Carrello</button>
+            <button type="submit" name="checkout" class="button">Procedi al Checkout →</button>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      <div style="text-align:center; padding:60px 0;">
+        <div style="font-size:64px; margin-bottom:16px;">🎨</div>
+        <h3>Il tuo carrello è vuoto</h3>
+        <p style="color:var(--ink-light); margin-bottom:24px;">Inizia a personalizzare il ritratto d'autore per il tuo animale domestico!</p>
+        <a href="/collections/all" class="button">Crea Ora la tua Caricatura</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carrello Principale",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Carrello Principale"
+    }
+  ]
+}
+{% endschema %}

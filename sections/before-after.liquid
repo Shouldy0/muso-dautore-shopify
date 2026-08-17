@@ -1,0 +1,57 @@
+<section class="section section--tint">
+  <div class="page-width">
+    <div class="section-heading">
+      <span class="eyebrow">IL TOCCO DELL'ARTISTA</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="before-after" data-before-after>
+      <div class="before-after__before-img">
+        <img src="{{ 'hero-bea.png' | asset_url }}" alt="Caricatura Muso d'Autore" width="900" height="675" loading="lazy">
+      </div>
+
+      <div class="before-after__after-img" data-ba-after>
+        <img src="{{ 'come-funziona.png' | asset_url }}" alt="Fotografia originale del cane" width="900" height="675" loading="lazy">
+      </div>
+
+      <div class="before-after__tag before-after__tag--after">📸 Foto Originale</div>
+      <div class="before-after__tag before-after__tag--before">🎨 Caricatura D'Autore</div>
+
+      <div class="before-after__handle" data-ba-handle>
+        <div class="before-after__handle-button">
+          ‹ ›
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <a href="/collections/all" class="button">Trasforma la foto del tuo cucciolo →</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Prima e Dopo Interattivo",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titolo",
+      "default": "Dal tuo scatto all’opera d’arte"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sottotitolo",
+      "default": "Trascina il cursore per scoprire come trasformiamo la fotografia reale in una caricatura ricca di espressività e dettagli d'autore."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Prima e Dopo Interattivo"
+    }
+  ]
+}
+{% endschema %}

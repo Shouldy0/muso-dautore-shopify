@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "name": "Informazioni sul tema",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Muso d'Autore - Tema Shopify Premium 2.0"
+      }
+    ]
+  },
+  {
+    "name": "Colori del Negozio",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Colore Principale (Terracotta)",
+        "default": "#B85C44"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Colore Secondario (Inchiostro)",
+        "default": "#2B2521"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_paper",
+        "label": "Sfondo Carta Warm",
+        "default": "#F8F3EB"
+      }
+    ]
+  },
+  {
+    "name": "Barra Annunci",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Mostra Barra Annunci",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Testo Annuncio",
+        "default": "🎨 Spedizione Gratuita in tutta Italia | Anteprima via WhatsApp/Email prima della consegna!"
+      }
+    ]
+  },
+  {
+    "name": "Carrello AJAX",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Soglia Spedizione Gratuita (€)",
+        "default": 50
+      }
+    ]
+  }
+]
