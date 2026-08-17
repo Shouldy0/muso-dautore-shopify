@@ -1,30 +1,56 @@
 <section class="section page-width how">
-  <div class="section-heading">
+  <div class="section-heading" data-animate>
     <span class="eyebrow">SEMPLICE E TRASPARENTE</span>
     <h2>{{ section.settings.heading }}</h2>
     <p>{{ section.settings.intro }}</p>
   </div>
 
-  <div style="margin-bottom:50px; text-align:center;">
-    <img class="process-art" src="{{ 'come-funziona.png' | asset_url }}" alt="Dal caricamento della fotografia al disegno in Procreate e alla stampa" width="1000" height="666" style="margin:0 auto; border-radius:var(--radius-lg); box-shadow:var(--shadow-md);" loading="lazy">
+  <!-- Interactive Animated 3-Step Timeline -->
+  <div class="process-timeline">
+    
+    <!-- Step 1 Card -->
+    <div class="process-step-card" data-animate>
+      <div class="process-step-card__number">01</div>
+      <div>
+        <div class="process-step-card__icon-wrapper">📸</div>
+        <h3>1. Invia la tua foto</h3>
+        <p>Scegli una o più foto nitide e ben illuminate del tuo animale domestico (cane, gatto o altro cucciolo) e allegala nel customizer.</p>
+      </div>
+      <div style="margin-top:20px; font-size:13px; font-weight:600; color:var(--terra);">
+        ✦ Foto nitida all'altezza occhi
+      </div>
+    </div>
+
+    <!-- Step 2 Card -->
+    <div class="process-step-card" data-animate style="transition-delay:0.15s;">
+      <div class="process-step-card__number">02</div>
+      <div>
+        <div class="process-step-card__icon-wrapper">🎨</div>
+        <h3>2. Disegno & Anteprima</h3>
+        <p>L'artista illustra a mano il ritratto in Procreate cogliendo l'espressività del musetto. Riceverai un'anteprima digitale entro 48 ore.</p>
+      </div>
+      <div style="margin-top:20px; font-size:13px; font-weight:600; color:var(--terra);">
+        ✦ 1 Revisione gratuita inclusa
+      </div>
+    </div>
+
+    <!-- Step 3 Card -->
+    <div class="process-step-card" data-animate style="transition-delay:0.3s;">
+      <div class="process-step-card__number">03</div>
+      <div>
+        <div class="process-step-card__icon-wrapper">📦</div>
+        <h3>3. Ricevi la tua opera</h3>
+        <p>Approvata l'anteprima, ricevi subito il file ad alta risoluzione 300 DPI oppure la stampa Fine Art / Quadro su Tela spedito a casa.</p>
+      </div>
+      <div style="margin-top:20px; font-size:13px; font-weight:600; color:var(--terra);">
+        ✦ Spedizione tracciata e protetta
+      </div>
+    </div>
+
   </div>
 
-  <div class="steps">
-    <article>
-      <b>01. FOTO</b>
-      <h3>Mandami le foto</h3>
-      <p>Scegli immagini nitide e luminose che raccontino bene l'espressione e il musetto del tuo animale.</p>
-    </article>
-    <article>
-      <b>02. ARTE & ANTEPRIMA</b>
-      <h3>Disegno & Approval</h3>
-      <p>Realizziamo a mano la caricatura su Procreate e ti inviamo un'anteprima in 48 ore per approvarla.</p>
-    </article>
-    <article>
-      <b>03. CONSEGNA</b>
-      <h3>Ricevi la tua opera</h3>
-      <p>Ricevi il file digitale ad alta risoluzione oppure la stampa Fine Art A4/A3/Tela confezionata con cura.</p>
-    </article>
+  <div style="text-align:center; margin-top:48px;" data-animate>
+    <a href="/collections/all" class="button">Inizia Ora il tuo Ritratto →</a>
   </div>
 </section>
 

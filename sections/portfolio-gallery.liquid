@@ -1,13 +1,13 @@
 <section class="section">
   <div class="page-width">
-    <div class="section-heading">
+    <div class="section-heading" data-animate>
       <span class="eyebrow">GALLERIA D'AUTORE</span>
       <h2>Esplora le nostre creazioni</h2>
-      <p>Ogni ritratto racchiude una storia d'amore speciale.</p>
+      <p>Ogni ritratto racchiude una storia d'amore speciale per cani, gatti e cuccioli.</p>
     </div>
 
     <!-- Filter Buttons -->
-    <div class="portfolio-filters">
+    <div class="portfolio-filters" data-animate>
       <button class="portfolio-filter-btn is-active" data-portfolio-filter="all">Tutti i Ritratti</button>
       <button class="portfolio-filter-btn" data-portfolio-filter="cani">Cani 🐶</button>
       <button class="portfolio-filter-btn" data-portfolio-filter="gatti">Gatti 🐱</button>
@@ -16,27 +16,30 @@
 
     <!-- Gallery Grid -->
     <div class="portfolio-grid">
-      <div class="portfolio-item" data-portfolio-item data-category="cani">
+      <!-- Item 1: Bea (Dog) -->
+      <div class="portfolio-item" data-portfolio-item data-category="cani" data-animate>
         <img src="{{ 'hero-bea.png' | asset_url }}" alt="Caricatura Bea" width="400" height="400" loading="lazy">
         <div class="portfolio-item__caption">
           <h4>Bea il Segugio</h4>
-          <p style="font-size:13px; margin:4px 0 0; opacity:0.8;">Ritratto Singolo · Pastello Warm</p>
+          <p style="font-size:13px; margin:4px 0 0; opacity:0.85;">Ritratto Singolo · Sfondo Warm Terracotta</p>
         </div>
       </div>
 
-      <div class="portfolio-item" data-portfolio-item data-category="gatti">
-        <img src="{{ 'bea-mascotte.png' | asset_url }}" alt="Caricatura Gatto" width="400" height="400" loading="lazy">
+      <!-- Item 2: Milo (Cat) -->
+      <div class="portfolio-item" data-portfolio-item data-category="gatti" data-animate style="transition-delay:0.15s;">
+        <img src="{{ 'gatto-milo.png' | asset_url }}" alt="Caricatura Gatto Milo" width="400" height="400" loading="lazy">
         <div class="portfolio-item__caption">
-          <h4>Milo il Gatto</h4>
-          <p style="font-size:13px; margin:4px 0 0; opacity:0.8;">Ritratto Singolo · Sfondo Mint</p>
+          <h4>Milo il Gatto Persiano</h4>
+          <p style="font-size:13px; margin:4px 0 0; opacity:0.85;">Ritratto Singolo · Sfondo Verde Mint Soft</p>
         </div>
       </div>
 
-      <div class="portfolio-item" data-portfolio-item data-category="multipli">
-        <img src="{{ 'come-funziona.png' | asset_url }}" alt="Caricatura Due Cani" width="400" height="400" loading="lazy">
+      <!-- Item 3: Max & Toby (Multi-pet) -->
+      <div class="portfolio-item" data-portfolio-item data-category="multipli" data-animate style="transition-delay:0.3s;">
+        <img src="{{ 'coppia-cani.png' | asset_url }}" alt="Caricatura Due Cani Max e Toby" width="400" height="400" loading="lazy">
         <div class="portfolio-item__caption">
           <h4>Max & Toby</h4>
-          <p style="font-size:13px; margin:4px 0 0; opacity:0.8;">Coppia di Cuccioli · Stampa Fine Art A3</p>
+          <p style="font-size:13px; margin:4px 0 0; opacity:0.85;">Ritratti di Coppia · Stampa Fine Art A3</p>
         </div>
       </div>
     </div>

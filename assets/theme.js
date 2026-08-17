@@ -1,9 +1,10 @@
 /**
- * Muso d'Autore - Core Theme Script
+ * Muso d'Autore — Core Theme Script & Animation Engine
  * Modern Vanilla JS Engine for Shopify Theme
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initScrollAnimations();
   initMobileNav();
   initCartDrawer();
   initProductCustomizer();
@@ -12,6 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioFilters();
   initQuantitySelectors();
 });
+
+/* ==========================================================================
+   0. SCROLL REVEAL ANIMATION ENGINE
+   ========================================================================== */
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('[data-animate]');
+  
+  if (!('IntersectionObserver' in window)) {
+    animatedElements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  animatedElements.forEach(el => observer.observe(el));
+}
 
 /* ==========================================================================
    1. MOBILE NAVIGATION DRAWER
@@ -98,7 +125,6 @@ function initCartDrawer() {
     overlay.addEventListener('click', window.MusoCart.close);
   }
 
-  // Handle Cart Item Updates & Removals inside Drawer
   drawer.addEventListener('click', (e) => {
     const removeBtn = e.target.closest('[data-cart-remove]');
     if (removeBtn) {
@@ -154,7 +180,6 @@ function renderCartContent(cart) {
     subtotalEl.textContent = formatMoney(cart.total_price);
   }
 
-  // Free shipping thresholds calculation (e.g. 50,00€ = 5000 cents)
   const freeShippingThreshold = 5000;
   if (shippingMeter && shippingText) {
     if (cart.total_price >= freeShippingThreshold) {
@@ -224,7 +249,6 @@ function renderItemProperties(properties) {
     if (!key || key.startsWith('_')) continue;
     if (!value) continue;
 
-    // Check if value is a file upload URL
     if (typeof value === 'string' && (value.startsWith('http') || value.startsWith('/'))) {
       propsHtml += `<div class="cart-property"><strong>${escapeHtml(key)}:</strong> <a href="${value}" target="_blank" rel="noopener">Visualizza foto 📷</a></div>`;
     } else {
@@ -242,7 +266,6 @@ function initProductCustomizer() {
   const form = document.querySelector('[data-product-customizer-form]');
   if (!form) return;
 
-  // File Upload Drag and Drop UI
   const dropzone = form.querySelector('[data-upload-dropzone]');
   const fileInput = form.querySelector('[data-upload-input]');
   const previewArea = form.querySelector('[data-upload-preview]');
@@ -306,7 +329,6 @@ function initProductCustomizer() {
     }
   }
 
-  // Variant selector change handler
   const variantSelect = form.querySelector('[data-variant-select]');
   const variantPills = form.querySelectorAll('[data-variant-pill]');
   const priceDisplay = form.querySelector('[data-product-price]');
@@ -327,7 +349,6 @@ function initProductCustomizer() {
     });
   }
 
-  // AJAX Form Submission
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('[type="submit"]');
@@ -348,7 +369,7 @@ function initProductCustomizer() {
       }
       return res.json();
     })
-    .then(item => {
+    .then(() => {
       if (window.MusoCart) {
         window.MusoCart.open();
       } else {
@@ -433,7 +454,6 @@ function initAccordions() {
 
       const isOpen = parent.classList.contains('is-open');
 
-      // Close sibling items if grouped
       const group = parent.closest('[data-accordion-group]');
       if (group) {
         group.querySelectorAll('[data-accordion-item]').forEach(item => {
