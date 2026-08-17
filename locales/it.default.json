@@ -1,1 +1,32 @@
-{"general":{"accessibility":{"skip_to_content":"Vai al contenuto"}}}
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Vai al contenuto principale"
+    },
+    "meta": {
+      "page": "Pagina {{ page }}"
+    },
+    "404": {
+      "title": "Pagina non trovata",
+      "subtext": "La pagina che stavi cercando non esiste o è stata spostata.",
+      "link": "Torna alla Home"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Il tuo Carrello",
+      "empty": "Il tuo carrello è vuoto",
+      "continue_shopping": "Continua lo shopping",
+      "subtotal": "Totale parziale",
+      "checkout": "Procedi al Checkout"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ordina il tuo Ritratto",
+      "sold_out": "Esaurito",
+      "unavailable": "Non disponibile",
+      "quantity": "Quantità"
+    }
+  }
+}

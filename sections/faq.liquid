@@ -1,2 +1,89 @@
-<section class="section page-width faq"><div class="section-heading"><p class="eyebrow">DOMANDE FREQUENTI</p><h2>Tutto quello che vuoi sapere</h2></div>{% for block in section.blocks %}<details {{ block.shopify_attributes }}><summary>{{ block.settings.question }}<span>+</span></summary><div>{{ block.settings.answer }}</div></details>{% endfor %}</section>
-{% schema %}{"name":"FAQ","blocks":[{"type":"question","name":"Domanda","settings":[{"type":"text","id":"question","label":"Domanda"},{"type":"richtext","id":"answer","label":"Risposta"}]}],"presets":[{"name":"FAQ","blocks":[{"type":"question","settings":{"question":"Quali fotografie devo inviare?","answer":"<p>Foto nitide, luminose e possibilmente all’altezza degli occhi. Puoi inviarne più di una.</p>"}},{"type":"question","settings":{"question":"Posso chiedere una modifica?","answer":"<p>Sì, una revisione leggera è inclusa prima della consegna definitiva.</p>"}},{"type":"question","settings":{"question":"Quanto tempo richiede?","answer":"<p>Il tempo artistico indicativo è di 5–7 giorni lavorativi, a cui si aggiungono stampa e spedizione.</p>"}}]}]}{% endschema %}
+<section class="section page-width faq">
+  <div class="section-heading">
+    <span class="eyebrow">DOMANDE FREQUENTI</span>
+    <h2>Tutto quello che vuoi sapere</h2>
+  </div>
+
+  <div class="faq-list">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <details {{ block.shopify_attributes }}>
+          <summary>
+            <span>{{ block.settings.question }}</span>
+            <span style="font-size:24px; font-weight:700;">+</span>
+          </summary>
+          <div>{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    {% else %}
+      <details open>
+        <summary>
+          <span>Quali fotografie devo inviare per il ritratto?</span>
+          <span style="font-size:24px; font-weight:700;">+</span>
+        </summary>
+        <div>
+          Consigliamo foto nitide, luminose e scattate possibilmente all'altezza degli occhi del tuo animale. Più la foto è definita, più il nostro artista potrà cogliere i dettagli del pelo e della sua espressività!
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span>Posso visionare un'anteprima prima della stampa o consegna?</span>
+          <span style="font-size:24px; font-weight:700;">+</span>
+        </summary>
+        <div>
+          Assolutamente sì! Entro 48-72 ore ti invieremo l'anteprima digitale via Email o WhatsApp. Potrai approvarla o richiedere una revisione gratuita prima dell'invio definitivo o della stampa.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span>Posso richiedere un ritratto con 2 o 3 animali insieme?</span>
+          <span style="font-size:24px; font-weight:700;">+</span>
+        </summary>
+        <div>
+          Sì! Nel modulo di personalizzazione del prodotto puoi selezionare 2 o 3 animali. Puoi anche inviarci foto separate dei cuccioli e l'artista li comporrà insieme in un unico ritratto armonioso.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span>Quali sono i tempi di realizzazione e spedizione?</span>
+          <span style="font-size:24px; font-weight:700;">+</span>
+        </summary>
+        <div>
+          Il tempo artistico di disegno per l'anteprima è di 48-72 ore lavorative. Una volta approvata l'anteprima, la versione digitale viene inviata subito, mentre le stampe cartacee Fine Art e le tele vengono spedite con corriere espresso tracciato in 2-4 giorni.
+        </div>
+      </details>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Domande Frequenti",
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Domanda",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Domanda"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Risposta"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Domande Frequenti"
+    }
+  ]
+}
+{% endschema %}

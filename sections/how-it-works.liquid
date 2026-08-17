@@ -1,2 +1,54 @@
-<section class="section page-width how"><div class="section-heading"><p class="eyebrow">SEMPLICE E PERSONALE</p><h2>{{ section.settings.heading }}</h2><p>{{ section.settings.intro }}</p></div><img class="process-art" src="{{ 'come-funziona.png' | asset_url }}" alt="Dal caricamento della fotografia al disegno e alla stampa" width="1536" height="1024" loading="lazy"><div class="steps"><article><b>01</b><h3>Mandami le foto</h3><p>Scegli immagini nitide che raccontino bene il muso e la personalità del tuo animale.</p></article><article><b>02</b><h3>Creo il ritratto</h3><p>Disegno personalmente la caricatura in Procreate e preparo l’anteprima da approvare.</p></article><article><b>03</b><h3>Ricevi la tua opera</h3><p>Scegli il file digitale oppure una stampa artistica A4 o A3, confezionata con cura.</p></article></div></section>
-{% schema %}{"name":"Come funziona","settings":[{"type":"text","id":"heading","label":"Titolo","default":"Dalla fotografia a un ricordo unico"},{"type":"textarea","id":"intro","label":"Introduzione","default":"Ogni ritratto nasce da un processo umano, curato e trasparente."}],"presets":[{"name":"Come funziona"}]}{% endschema %}
+<section class="section page-width how">
+  <div class="section-heading">
+    <span class="eyebrow">SEMPLICE E TRASPARENTE</span>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.intro }}</p>
+  </div>
+
+  <div style="margin-bottom:50px; text-align:center;">
+    <img class="process-art" src="{{ 'come-funziona.png' | asset_url }}" alt="Dal caricamento della fotografia al disegno in Procreate e alla stampa" width="1000" height="666" style="margin:0 auto; border-radius:var(--radius-lg); box-shadow:var(--shadow-md);" loading="lazy">
+  </div>
+
+  <div class="steps">
+    <article>
+      <b>01. FOTO</b>
+      <h3>Mandami le foto</h3>
+      <p>Scegli immagini nitide e luminose che raccontino bene l'espressione e il musetto del tuo animale.</p>
+    </article>
+    <article>
+      <b>02. ARTE & ANTEPRIMA</b>
+      <h3>Disegno & Approval</h3>
+      <p>Realizziamo a mano la caricatura su Procreate e ti inviamo un'anteprima in 48 ore per approvarla.</p>
+    </article>
+    <article>
+      <b>03. CONSEGNA</b>
+      <h3>Ricevi la tua opera</h3>
+      <p>Ricevi il file digitale ad alta risoluzione oppure la stampa Fine Art A4/A3/Tela confezionata con cura.</p>
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Come funziona",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titolo",
+      "default": "Dalla fotografia a un ricordo unico"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduzione",
+      "default": "Ogni ritratto nasce da un processo umano artigianale, curato nei minimi dettagli."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Come funziona"
+    }
+  ]
+}
+{% endschema %}
