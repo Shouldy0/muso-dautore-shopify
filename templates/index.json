@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "hero": {
+      "type": "premium-hero",
+      "settings": {
+        "heading": "Il tuo animale diventa un’opera d’autore",
+        "text": "Trasformo la sua espressione, il suo carattere e la vostra storia in una caricatura unica, disegnata a mano in Procreate.",
+        "button": "Crea la tua caricatura",
+        "link": "/products/caricatura-personalizzata-1-animale"
+      }
+    },
+    "before_after": {
+      "type": "before-after",
+      "settings": {
+        "heading": "Dal tuo scatto all’opera d’arte",
+        "subheading": "Trascina il cursore per scoprire come trasformiamo la fotografia reale in una caricatura ricca di espressività e dettagli d'autore."
+      }
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "Dalla fotografia a un ricordo unico",
+        "intro": "Ogni ritratto nasce da un processo umano, curato e trasparente."
+      }
+    },
+    "photo_guide": {
+      "type": "photo-guide",
+      "settings": {}
+    },
+    "portfolio": {
+      "type": "portfolio-gallery",
+      "settings": {}
+    },
+    "value_grid": {
+      "type": "value-grid",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "settings": {
+        "heading": "Cosa dicono i nostri clienti",
+        "subheading": "Oltre 350 ritratti realizzati e consegnati con amore in tutta Italia."
+      }
+    },
+    "bea_story": {
+      "type": "bea-story",
+      "settings": {}
+    },
+    "gift_banner": {
+      "type": "gift-banner",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "before_after",
+    "how_it_works",
+    "photo_guide",
+    "portfolio",
+    "value_grid",
+    "reviews",
+    "bea_story",
+    "gift_banner",
+    "faq",
+    "newsletter"
+  ]
+}
